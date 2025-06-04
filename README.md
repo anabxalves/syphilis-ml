@@ -1,1 +1,99 @@
-# syphilis-ml
+# Análise Preditiva de Sífilis Congênita em Pernambuco
+
+Este repositório contém um projeto de Aprendizado de Máquina focado na análise e desenvolvimento de modelos preditivos para dados clínicos e sociodemográficos relacionados à Sífilis Congênita em Pernambuco, Brasil. O estudo utiliza dados do Programa Mãe Coruja Pernambucana (PMCP) no período de 2013 a 2021.
+
+## Estrutura do Repositório
+
+- `av2ml.ipynb`: O notebook principal do Jupyter que contém todo o código para pré-processamento de dados, análise exploratória (EDA), treinamento de modelos de regressão e classificação, e avaliação dos resultados.
+- `Atv2 - Aprendizado de Máquina - 2025.1.pdf`: O artigo científico (em português) que detalha a pesquisa, metodologia e resultados.
+- `data_set.csv`: O conjunto de dados original utilizado no projeto, contendo 41.762 registros e 26 atributos clínicos e sociodemográficos.
+- `LICENSE`: O arquivo de licença MIT para este projeto.
+
+## Sobre o Projeto
+
+A sÍfilis congênita continua sendo um problema de saúde pública significativo. A detecção precoce é crucial, e este projeto explora o uso de técnicas de aprendizado de máquina para auxiliar nesse processo.
+
+### Objetivos Principais:
+
+1.  **Prever a idade (`AGE`)** das participantes utilizando técnicas de regressão. [cite_start]A idade é um indicador demográfico relevante para políticas públicas de prevenção[cite: 94, 99, 107].
+2.  [cite_start]**Classificar os resultados do teste VDRL (`VDRL_RESULT`)** para sífilis congênita, focando na identificação de casos positivos[cite: 94, 99, 107]. [cite_start]Casos positivos representam a classe minoritária no dataset, com aproximadamente 1,98% do total de registros[cite: 94, 99, 113].
+
+## Conjunto de Dados
+
+O dataset, intitulado "Clinical and sociodemographic data on congenital syphilis cases, Brazil, 2013-2021", abrange 41.762 registros e 26 atributos. [cite_start]Ele inclui informações clínicas e sociodemográficas sobre cuidados pré-natais, desfechos de gestantes e os resultados do teste VDRL de seus filhos, coletados em municípios pernambucanos atendidos pelo PMCP[cite: 93, 98, 106, 110, 111].
+
+### Atributos Chave:
+
+-   `VDRL_RESULT`: Variável alvo para classificação (Positivo: 0, Negativo: 1).
+-   `AGE`: Variável alvo para regressão (idade das participantes).
+-   [cite_start]`LEVEL_SCHOOLING`: Escolaridade, identificada como uma das *features* importantes para a predição do VDRL[cite: 97, 103, 154].
+-   [cite_start]`MARITAL_STATUS`: Estado civil, também considerado um fator importante[cite: 163, 176].
+-   [cite_start]`FOOD_INSECURITY`: Grau de insegurança alimentar, outro atributo de destaque na análise de importância[cite: 163, 176].
+-   Outros atributos incluem informações sobre saúde, infraestrutura familiar e renda.
+
+## Metodologia
+
+O projeto seguiu as seguintes etapas:
+
+1.  **Pré-processamento de Dados:**
+    -   [cite_start]Carregamento e análise inicial para verificação de valores ausentes e *outliers*[cite: 95, 100, 119].
+    -   [cite_start]Remoção de valores anômalos na variável `AGE` (ex: idades negativas)[cite: 120].
+    -   [cite_start]Tratamento de valores ausentes em atributos categóricos com a categoria "Não informado"[cite: 121].
+2.  **Análise Exploratória dos Dados (EDA):**
+    -   [cite_start]Visualização da distribuição da idade (`AGE`), mostrando concentração de pacientes entre 20 e 30 anos[cite: 123, 124].
+    -   [cite_start]Análise da distribuição dos resultados do VDRL, revelando um severo desbalanceamento de classes (aprox. 1.98% de casos positivos)[cite: 113, 114, 126].
+    -   [cite_start]Criação de uma matriz de correlação, que indicou ausência de correlações fortes entre variáveis numéricas e as variáveis-alvo, sublinhando a importância de variáveis categóricas e modelos não-lineares[cite: 136, 137].
+3.  **Modelagem Preditiva:**
+    -   **Regressão (Previsão de `AGE`):** Utilizado `RandomForestRegressor` em um pipeline com `StandardScaler` para atributos numéricos e `OneHotEncoder` para categóricos. [cite_start]A avaliação foi feita com MAE, MSE e RMSE[cite: 95, 100, 142, 144].
+    -   **Classificação (Classificação de `VDRL_RESULT`):** Empregado `DecisionTreeClassifier` e, para lidar com o desbalanceamento de classes, a técnica `SMOTEENN` foi aplicada aos dados de treinamento. [cite_start]As métricas de avaliação incluíram AUC-ROC, Precision, Recall e F1-Score, com foco na classe positiva[cite: 95, 100, 109, 145, 146, 147].
+4.  [cite_start]**Análise de Importância de Atributos:** Identificação dos fatores mais influentes para a predição do `VDRL_RESULT` pelo `DecisionTreeClassifier`[cite: 148].
+5.  [cite_start]**Visualização da Árvore de Decisão:** Representação gráfica dos primeiros níveis da árvore de decisão para entender as regras de classificação[cite: 165].
+
+## Resultados
+
+### Regressão (Previsão de Idade)
+
+-   [cite_start]**RMSE:** Aproximadamente 4.16[cite: 96, 101, 150]. [cite_start]Isso sugere que o modelo consegue estimar a idade com um erro médio de cerca de 4 anos[cite: 150].
+
+### Classificação (Resultado do VDRL)
+
+-   [cite_start]**AUC-ROC:** ~0.5641 (com SMOTEENN)[cite: 96, 102, 151]. [cite_start]O valor próximo a 0.5 indica um desempenho similar a um classificador aleatório[cite: 152].
+-   [cite_start]**Recall (Sensibilidade):** ~0.1659[cite: 96, 102, 151]. [cite_start]O modelo identificou apenas cerca de 16.6% dos casos reais de sífilis[cite: 151].
+-   [cite_start]**Precision:** ~0.0279[cite: 96, 102, 151]. [cite_start]Quando o modelo previu sífilis, esteve correto em apenas aproximadamente 2.8% das vezes[cite: 151].
+-   [cite_start]**Matriz de Confusão:** Demonstrou um número significativo de falsos negativos (1.230 casos), tornando o modelo inadequado para triagem clínica sensível[cite: 157, 159]. [cite_start]A aplicação de SMOTEENN não melhorou a AUC-ROC em relação ao modelo sem reamostragem[cite: 153].
+
+### Importância dos Atributos para VDRL_RESUL
+
+Os atributos mais importantes identificados foram:
+
+-   [cite_start]`MARITAL_STATUS_1.0` (estado civil) [cite: 163]
+-   [cite_start]`FOOD_INSECURITY_2.0` (grau de insegurança alimentar) [cite: 163]
+-   [cite_start]`LEVEL_SCHOOLING` (escolaridade) [cite: 97, 103, 154, 163]
+
+[cite_start]Esses resultados indicam que fatores socioeconômicos têm um papel relevante na identificação de risco para sífilis congênita[cite: 164, 176].
+
+## Conclusão
+
+Embora o modelo de regressão para a previsão da idade tenha apresentado um desempenho satisfatório, o modelo de classificação para sífilis congênita foi limitado. [cite_start]A baixa capacidade de detecção da classe minoritária (sífilis congênita), mesmo com técnicas de reamostragem como SMOTEENN, ressalta o desafio em prever corretamente a sífilis congênita com os atributos e modelos atuais[cite: 172, 174, 175, 177, 178]. [cite_start]Futuras investigações devem explorar variáveis mais informativas e modelos mais sofisticados[cite: 160].
+
+## Como Executar o Projeto
+
+1.  **Clone o repositório:**
+    ```bash
+    git clone https://github.com/seu-usuario/seu-repositorio.git
+    cd seu-repositorio
+    ```
+
+2.  **Instale as dependências:**
+    Recomenda-se usar um ambiente virtual.
+    ```bash
+    pip install pandas numpy scikit-learn matplotlib seaborn imblearn
+    ```
+
+3.  **Abra o notebook Jupyter:**
+    ```bash
+    jupyter notebook av2ml.ipynb
+    ```
+    Execute as células do notebook sequencialmente para reproduzir a análise e os resultados.
+
+---
