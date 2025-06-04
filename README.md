@@ -18,6 +18,9 @@ A sÍfilis congênita continua sendo um problema de saúde pública significativ
 1.  **Prever a idade (`AGE`)** das participantes utilizando técnicas de regressão. A idade é um indicador demográfico relevante para políticas públicas de prevenção.
 2.  **Classificar os resultados do teste VDRL (`VDRL_RESULT`)** para sífilis congênita, focando na identificação de casos positivos. Casos positivos representam a classe minoritária no dataset, com aproximadamente 1,98% do total de registros.
 
+## Fonte de Dados
+A base deste estudo, incluindo o conjunto de dados, foi o artigo "Sífilis Congênita em Pernambuco: Uma Análise Preditiva de Dados Clínicos e Sociodemográficos (2013-2021)", disponível em: https://data.mendeley.com/datasets/3zkcvybvkz/1.  O data_set.csv é o conjunto de dados extraído diretamente dessa fonte.
+
 ## Conjunto de Dados
 
 O dataset, intitulado "Clinical and sociodemographic data on congenital syphilis cases, Brazil, 2013-2021", abrange 41.762 registros e 26 atributos. Ele inclui informações clínicas e sociodemográficas sobre cuidados pré-natais, desfechos de gestantes e os resultados do teste VDRL de seus filhos, coletados em municípios pernambucanos atendidos pelo PMCP.
