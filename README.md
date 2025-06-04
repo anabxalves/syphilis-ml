@@ -42,7 +42,7 @@ O projeto seguiu as seguintes etapas:
 2.  **Análise Exploratória dos Dados (EDA):**
     -   Visualização da distribuição da idade (`AGE`), mostrando concentração de pacientes entre 20 e 30 anos.
     -   Análise da distribuição dos resultados do VDRL, revelando um severo desbalanceamento de classes (aprox. 1.98% de casos positivos).
-    -   Criação de uma matriz de correlação, que indicou ausência de correlações fortes entre variáveis numéricas e as variáveis-alvo, sublinhando a importância de variáveis categóricas e modelos não-lineares].
+    -   Criação de uma matriz de correlação, que indicou ausência de correlações fortes entre variáveis numéricas e as variáveis-alvo, sublinhando a importância de variáveis categóricas e modelos não-lineares.
 3.  **Modelagem Preditiva:**
     -   **Regressão (Previsão de `AGE`):** Utilizado `RandomForestRegressor` em um pipeline com `StandardScaler` para atributos numéricos e `OneHotEncoder` para categóricos. A avaliação foi feita com MAE, MSE e RMSE.
     -   **Classificação (Classificação de `VDRL_RESULT`):** Empregado `DecisionTreeClassifier` e, para lidar com o desbalanceamento de classes, a técnica `SMOTEENN` foi aplicada aos dados de treinamento. As métricas de avaliação incluíram AUC-ROC, Precision, Recall e F1-Score, com foco na classe positiva.
