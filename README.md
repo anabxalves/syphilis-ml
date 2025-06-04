@@ -3,12 +3,11 @@
 Este repositório contém um projeto de Aprendizado de Máquina focado na análise e desenvolvimento de modelos preditivos para dados clínicos e sociodemográficos relacionados à Sífilis Congênita em Pernambuco, Brasil. O estudo utiliza dados do Programa Mãe Coruja Pernambucana (PMCP) no período de 2013 a 2021.
 
 ## Membros do projeto
-- Ana Beatriz Alves @anabxalves
-- Caio Barreto de Albuqueque @Caiobadv
-- Isabela Spinelli @bela975
-- Maria Luisa Arruda @MaluArr
-- Victor Hora Tenório @victorhorat
-
+- Ana Beatriz Alves ([@anabxalves](https://github.com/anabxalves))
+- Caio Barreto de Albuquerque ([@Caiobadv](https://github.com/Caiobadv))
+- Isabela Spinelli ([@bela975](https://github.com/bela975))
+- Maria Luisa Arruda ([@MaluArr](https://github.com/MaluArr))
+- Victor Hora Tenório ([@victorhorat](https://github.com/victorhorat))
 ## Estrutura do Repositório
 
 - `av2ml.ipynb`: O notebook principal do Jupyter que contém todo o código para pré-processamento de dados, análise exploratória (EDA), treinamento de modelos de regressão e classificação, e avaliação dos resultados.
